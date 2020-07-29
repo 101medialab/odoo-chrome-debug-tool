@@ -1,9 +1,21 @@
 if ('jquery' in ($() || {})) {
     setTimeout(() => {
+        let isCtrlKeyDown = false;
+
+        $('body').on('keydown', (event) => {
+            isCtrlKeyDown = event.ctrlKey || event.metaKey;
+        });
+
+        $('body').on('keyup', (event) => {
+            isCtrlKeyDown = event.ctrlKey || event.metaKey;
+        });
+
         $('body.o_web_client[data-debug-mode=1]').on('DOMNodeInserted', '.tooltip', () => {
             const title = $('.oe_tooltip_string').text().replace(/\s{2,}/g, ' ').trim();
-            console.log('----------------');
-            console.log(title);
+            if (!isCtrlKeyDown) {
+                console.log('----------------');
+                console.log(title);
+            }
 
             let result = {};
 
@@ -12,6 +24,11 @@ if ('jquery' in ($() || {})) {
 
                 result[content[0]] = content[1];
             });
+
+            if (isCtrlKeyDown) {
+                console.log(result.Field);
+                return;
+            }
 
             console.table(result);
 
