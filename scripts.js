@@ -42,8 +42,10 @@ if ('jquery' in ($() || {})) {
                 result.Selections[content[0].replace(/\[|\]/g, '').trim()] = content[1].trim();
             });
 
-            console.log(title + ' selections:');
-            console.table(result.Selections);
+            if (result.Selections) {
+                console.log(title + ' selections:');
+                console.table(result.Selections);
+            }
         });
     }, 2000);
 }
