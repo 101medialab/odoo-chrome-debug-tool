@@ -1,0 +1,21 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "name": "Odoo Chrome Debug Tool",
+    "description": "Everyone loves to copy information inside tooltip under debug mode. Yeah, you finally can do it easily with this extension",
+    "author": "https://github.com/101medialab/odoo-chrome-debug-tool",
+    "permissions": [
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "./jquery-3.4.1.min.js",
+                "./scripts.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
